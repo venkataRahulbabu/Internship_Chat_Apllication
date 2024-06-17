@@ -6,7 +6,7 @@ import CheckPassword from "../Pages/CheckPassword";
 import Home from "../Pages/HomePage";
 import MessagePage from "../Components/MessagePage";
 import AuthLayouts from "../layout";
-// import Forgotpassword from "../Pages/Forgotpassword";
+import Forgotpassword from "../Pages/ForgotPassword";
 
 const router = createBrowserRouter([
 {
@@ -15,20 +15,20 @@ const router = createBrowserRouter([
     children : [
         {
             path : "register",
-            element : <AuthLayouts><RegisterPage/></AuthLayouts>
+            element : <AuthLayouts><RegisterPage /></AuthLayouts>
         },
         {
-            path : 'email',
+            path : 'verify-email',
             element : <AuthLayouts><CheckEmailPage/></AuthLayouts>
         },
         {
-            path : 'password',
+            path : 'verify-password',
             element : <AuthLayouts><CheckPassword/></AuthLayouts>
         },
-        /* {
+        {
             path : 'forgot-password',
             element : <AuthLayouts><Forgotpassword/></AuthLayouts>
-        }, */
+        },
         {
             path : "",
             element : <Home/>,
