@@ -6,9 +6,9 @@ import { BiLogOut } from "react-icons/bi";
 import Avatar from './Avatar'
 import { useDispatch, useSelector } from 'react-redux';
 import EditUserDetails from './EditUserDetails';
-// import Divider from './Divider';
+import Divider from './Divider';
 import { FiArrowUpLeft } from "react-icons/fi";
-// import SearchUser from './SearchUser';
+import SearchUser from './SearchUser';
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa6";
 import { logout } from '../redux/userSlice';
@@ -22,7 +22,7 @@ const Sidebar = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    /* useEffect(()=>{
+    useEffect(()=>{
         if(socketConnection){
             socketConnection.emit('sidebar',user._id)
             
@@ -52,11 +52,11 @@ const Sidebar = () => {
                 setAllUser(conversationUserData)
             })
         }
-    },[socketConnection,user]) */
+    },[socketConnection,user])
 
     const handleLogout = ()=>{
         dispatch(logout())
-        navigate("/verify-email")
+        navigate("/email")
         localStorage.clear()
     }
 
@@ -70,7 +70,7 @@ const Sidebar = () => {
                         />
                     </NavLink>
 
-                    <div title='Add Friend' onClick={()=>setOpenSearchUser(true)} className='w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' >
+                    <div title='add friend' onClick={()=>setOpenSearchUser(true)} className='w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' >
                         <FaUserPlus size={20}/>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ const Sidebar = () => {
                             width={40}
                             height={40}
                             name={user?.name}
-                            imageUrl={user.profile_pic}
+                            imageUrl={user?.profile_pic}
                             userId={user?._id}
                         />
                     </button>
@@ -169,12 +169,12 @@ const Sidebar = () => {
                 )
             }
 
-            
-            {/* {
+            {/**search user */}
+            {
                 openSearchUser && (
                     <SearchUser onClose={()=>setOpenSearchUser(false)}/>
                 )
-            } */}
+            }
 
     </div>
   )

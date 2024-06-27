@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import RegisterPage from "../Pages/RegisterPage";
-import CheckEmailPage from "../Pages/CheckEmail";
-import CheckPassword from "../Pages/CheckPassword";
-import Home from "../Pages/HomePage";
-import MessagePage from "../Components/MessagePage";
+import RegisterPage from "../pages/RegisterPage";
+import CheckEmailPage from "../pages/CheckEmailPage";
+import CheckPasswordPage from "../pages/CheckPasswordPage";
+import Home from "../pages/Home";
+import MessagePage from "../components/MessagePage";
 import AuthLayouts from "../layout";
-import Forgotpassword from "../Pages/ForgotPassword";
+import Forgotpassword from "../pages/Forgotpassword";
 
 const router = createBrowserRouter([
 {
@@ -15,15 +15,15 @@ const router = createBrowserRouter([
     children : [
         {
             path : "register",
-            element : <AuthLayouts><RegisterPage /></AuthLayouts>
+            element : <AuthLayouts><RegisterPage/></AuthLayouts>
         },
         {
-            path : 'verify-email',
+            path : 'email',
             element : <AuthLayouts><CheckEmailPage/></AuthLayouts>
         },
         {
-            path : 'verify-password',
-            element : <AuthLayouts><CheckPassword/></AuthLayouts>
+            path : 'password',
+            element : <AuthLayouts><CheckPasswordPage/></AuthLayouts>
         },
         {
             path : 'forgot-password',

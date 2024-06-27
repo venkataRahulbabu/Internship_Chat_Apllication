@@ -10,6 +10,8 @@ const uploadFile = async(file)=>{
         body : formData
     })
     const responseData = await response.json()
+
+
     return responseData
 }
 

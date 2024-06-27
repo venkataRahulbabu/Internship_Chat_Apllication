@@ -1,46 +1,45 @@
 import React, { useEffect, useState } from 'react'
-// import { IoClose } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import uploadFile from '../helpers/uploadFile';
+import uploadFile from '../helpers/uploadFile';
 import axios from 'axios'
 import toast from 'react-hot-toast';
-// import { PiUserCircle } from "react-icons/pi";
-import Avatar from '../Components/Avatar';
+import { PiUserCircle } from "react-icons/pi";
+import Avatar from '../components/Avatar';
 import { useDispatch } from 'react-redux';
 import { setToken, setUser } from '../redux/userSlice';
 
-const CheckPassword = () => {
+const CheckPasswordPage = () => {
   const [data,setData] = useState({
     password : "",
     userId : ""
   })
-  const navigate = useNavigate();
-  const location = useLocation();
-  const dispatch = useDispatch(); /* This function is used to send actions to the Redux store. */
+  const navigate = useNavigate()
+  const location = useLocation()
+  const dispatch = useDispatch()
 
   useEffect(()=>{
     if(!location?.state?.name){
-      navigate('/verify-email');
+      navigate('/email')
     }
   },[])
 
   const handleOnChange = (e)=>{
     const { name, value} = e.target
 
-    setData((prev)=>{
+    setData((preve)=>{
       return{
-          ...prev,
+          ...preve,
           [name] : value
       }
     })
   }
 
   const handleSubmit = async(e)=>{
-    e.preventDefault();
-    e.stopPropagation();
+    e.preventDefault()
+    e.stopPropagation()
 
-    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/verify-password`
-    console.log(URL);
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`
 
     try {
         const response = await axios({
@@ -62,7 +61,7 @@ const CheckPassword = () => {
             setData({
               password : "",
             })
-            navigate('/');
+            navigate('/')
         }
     } catch (error) {
         toast.error(error?.response?.data?.message)
@@ -79,8 +78,8 @@ const CheckPassword = () => {
                   size={80}
                 /> */}
                 <Avatar
-                  width={100}
-                  height={100}
+                  width={70}
+                  height={70}
                   name={location?.state?.name}
                   imageUrl={location?.state?.profile_pic}
                 />
@@ -118,5 +117,5 @@ const CheckPassword = () => {
   )
 }
 
-export default CheckPassword
+export default CheckPasswordPage
 
